@@ -18,35 +18,36 @@ public class Nodo {
         this.adyacentes = nuevoAdya;
     }
            
-    
     // Metodos de Nodo
+    //
     public String obtenerNombre() {
         return this.nombre;
     }
 
-    /*
-    public void obtenerAdyacentes() {
-        System.out.println(nombre);
+    public HashSet<Nodo> obtenerAdyacentes() {
+        return this.adyacentes;
     }
-    public void agregarAdyacente() {
-        System.out.println(nombre);
+
+    public void agregarAdyacente(Nodo nuevoAdya) {
+        this.adyacentes.add(nuevoAdya);
     }
-     
-    public void agregarVariosAdyacente() {
-        System.out.println(nombre);
-    }    
+    
+    public void agregarVariosAdyacentes(HashSet<Nodo> nuevosAdya) {
+        this.adyacentes.addAll(nuevosAdya);
+    }
+    
     public void imprimir() {
-        System.out.println("[" + this.nombre + "] -> [");
-        itr = this.adyacentes.iterator();
-        System.out.print( itr.next() );
+        System.out.print("[" + this.nombre + "] -> [");
+        Iterator<Nodo> itr = this.adyacentes.iterator();
+        System.out.print( itr.next().obtenerNombre() );
         while(itr.hasNext()) {
-            String i = itr.next();
+            String i = itr.next().obtenerNombre();
             System.out.print(",  " + i);
         }
         System.out.println("]");
 
     }
-    */
+
 }
 
 
