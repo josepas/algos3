@@ -5,24 +5,26 @@ public class Nodo {
 
     // Campos de la clase Nodo
     // 
-    public String[] nombre;
-    public HashSet adyacentes;
+    private String nombre;
+    private HashSet<Nodo> adyacentes;
         
     // Constructor de Nodo
-    public Nodo(String[] nuevoNombre) {
-        this( nuevoNombre, new HashSet() );
+    public Nodo(String nuevoNombre) {
+        this( nuevoNombre, new HashSet<Nodo>() );
     }
-    public Nodo(String[] nuevoNombre, HashSet nuevoAdya) {
+    
+    public Nodo(String nuevoNombre, HashSet<Nodo> nuevoAdya) {
         this.nombre = nuevoNombre;
         this.adyacentes = nuevoAdya;
     }
            
-    /*
+    
     // Metodos de Nodo
-    public void obtenerNombre() {
-        System.out.println(nombre);
+    public String obtenerNombre() {
+        return this.nombre;
     }
 
+    /*
     public void obtenerAdyacentes() {
         System.out.println(nombre);
     }
@@ -46,5 +48,10 @@ public class Nodo {
     }
     */
 }
+
+
+
+
+
 
 
