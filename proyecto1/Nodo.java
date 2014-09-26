@@ -39,7 +39,12 @@ public class Nodo {
     public void imprimir() {
         System.out.print("[" + this.nombre + "] -> [");
         Iterator<Nodo> itr = this.adyacentes.iterator();
-        System.out.print( itr.next().obtenerNombre() );
+        
+        // verifica que los adyacentes no sean vacios
+        if (itr.hasNext()) {
+            System.out.print( itr.next().obtenerNombre() );
+        }
+
         while(itr.hasNext()) {
             String i = itr.next().obtenerNombre();
             System.out.print(",  " + i);

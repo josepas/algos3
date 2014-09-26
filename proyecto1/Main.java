@@ -6,10 +6,12 @@ class  Proyecto1 {
 	public static void main(String[] args) {
 
 		Nodo epale = new Nodo("uuu");
+		Nodo hola = new Nodo("papapa");
 	    Nodo agente86 = new Nodo("A");
 	    Nodo agente69 = new Nodo("B");
 		Nodo agente42 = new Nodo("C");
 		Nodo agente18 = new Nodo("D");
+
 				
 	    HashSet<Nodo> red1 = new HashSet<Nodo>();
 	    red1.add(agente69);
@@ -24,6 +26,13 @@ class  Proyecto1 {
 	    epale.imprimir();
 	    epale.agregarVariosAdyacentes(red1);
 	    epale.imprimir();
+
+	    Grafo g = new Grafo();
+	    g.agregarNodo(epale);
+	    g.agregarNodo(hola);
+	    g.imprimir();
+
+
 
 	}
 }
