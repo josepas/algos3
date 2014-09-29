@@ -4,7 +4,7 @@ import java.util.LinkedList;
 
 class Grafo {
 
-	private HashSet<Nodo> nodos;
+	public HashSet<Nodo> nodos;
 
 	// Constructor del Grafo
 	//
@@ -29,7 +29,7 @@ class Grafo {
 		}
 	}
 
-	public HashSet obtenerAlcanzables (Nodo v) {
+	public HashSet<Nodo> obtenerAlcanzables (Nodo v) {
 		HashSet<Nodo> alcanzables = new HashSet<Nodo>();
         LinkedList<Nodo> cola = new LinkedList<Nodo>();
         Nodo tmp;
@@ -38,7 +38,6 @@ class Grafo {
         while ( !cola.isEmpty() ) {
         	tmp = cola.poll();
         	alcanzables.add(tmp);
-        	System.out.println("Agrege " + tmp.nombre + " a los alcanzables de --> " + v.nombre);
         	for ( Nodo x : tmp.obtenerAdyacentes() ) {
         		if ( !alcanzables.contains(x) ) {
         			cola.offer(x);
@@ -48,15 +47,12 @@ class Grafo {
         return alcanzables;
     }
 
-/*
-	public Grafo aplanarRed (Nodo v) {
+	public Grafo aplanarRed () {
 		Grafo h = new Grafo();
 		for (Nodo x : this.nodos) {
-			
-			this.obtenerAlcanzables(x)
-			this.agregarNodo(x);
-
+			x.adyacentes = this.obtenerAlcanzables(x);
+			h.agregarNodo(x);
 		}
+		return h;
 	}
-	*/
 }

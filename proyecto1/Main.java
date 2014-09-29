@@ -21,6 +21,8 @@ class  Proyecto1 {
 		v5.agregarAdyacente(v4);
 
 		Grafo g = new Grafo();
+		Grafo h = new Grafo();
+
 		g.agregarNodo(v1);
 		g.agregarNodo(v2);
 		g.agregarNodo(v3);
@@ -29,6 +31,8 @@ class  Proyecto1 {
 		g.imprimir();
 		g.obtenerAlcanzables(v1);
 		g.obtenerAlcanzables(v4);
+		h = g.aplanarRed();
+		h.imprimir();
 
 	}
 }
