@@ -27,10 +27,8 @@ class  Proyecto1 {
 		g.agregarNodo(v4);
 		g.agregarNodo(v5);
 		g.imprimir();
-		System.out.println("que paso apa");
-
-
-
+		g.obtenerAlcanzables(v1);
+		g.obtenerAlcanzables(v4);
 
 	}
 }

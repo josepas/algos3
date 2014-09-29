@@ -29,33 +29,34 @@ class Grafo {
 		}
 	}
 
-	public HashSet obtenerAlacanzables (Nodo v) {
+	public HashSet obtenerAlcanzables (Nodo v) {
 		HashSet<Nodo> alcanzables = new HashSet<Nodo>();
         LinkedList<Nodo> cola = new LinkedList<Nodo>();
         Nodo tmp;
+       
         cola.offer(v);
-
         while ( !cola.isEmpty() ) {
         	tmp = cola.poll();
         	alcanzables.add(tmp);
         	System.out.println("Agrege " + tmp.nombre + " a los alcanzables de --> " + v.nombre);
         	for ( Nodo x : tmp.obtenerAdyacentes() ) {
-        		cola.offer(x);
+        		if ( !alcanzables.contains(x) ) {
+        			cola.offer(x);
+        		}
         	}
         }
         return alcanzables;
     }
 
-
 /*
-	public void aplanarRed (Nodo v) {
-		LinkedList<Nodo> cola = new LinkedList<Nodo>();
-		cola.offer(v);
-		while (!cola.isEmpty()) {
-			for (Nodo x : v.adyacentes) {
-				v.adyacentes add
-			}
+	public Grafo aplanarRed (Nodo v) {
+		Grafo h = new Grafo();
+		for (Nodo x : this.nodos) {
+			
+			this.obtenerAlcanzables(x)
+			this.agregarNodo(x);
+
 		}
 	}
-*/
+	*/
 }
