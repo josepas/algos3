@@ -1,12 +1,13 @@
 import java.util.HashSet;
 import java.util.Iterator;
+import java.util.LinkedList;
 
 public class Nodo {
 
     // Campos de la clase Nodo
     // 
-    private String nombre;
-    private HashSet<Nodo> adyacentes;
+    public String nombre;
+    public HashSet<Nodo> adyacentes;
         
     // Constructor de Nodo
     public Nodo(String nuevoNombre) {
@@ -35,6 +36,8 @@ public class Nodo {
     public void agregarVariosAdyacentes(HashSet<Nodo> nuevosAdya) {
         this.adyacentes.addAll(nuevosAdya);
     }
+
+
     
     public void imprimir() {
         System.out.print("[" + this.nombre + "] -> [");
@@ -50,6 +53,10 @@ public class Nodo {
             System.out.print(",  " + i);
         }
         System.out.println("]");
+
+
+
+
 
     }
 
