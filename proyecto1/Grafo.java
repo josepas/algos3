@@ -1,6 +1,5 @@
 import java.util.HashSet;
 import java.util.Iterator;	
-import java.util.LinkedList;
 
 class Grafo {
 
@@ -29,30 +28,32 @@ class Grafo {
 		}
 	}
 
-	public HashSet<Nodo> obtenerAlcanzables (Nodo v) {
-		HashSet<Nodo> alcanzables = new HashSet<Nodo>();
-        LinkedList<Nodo> cola = new LinkedList<Nodo>();
-        Nodo tmp;
-       
-        cola.offer(v);
-        while ( !cola.isEmpty() ) {
-        	tmp = cola.poll();
-        	alcanzables.add(tmp);
-        	for ( Nodo x : tmp.obtenerAdyacentes() ) {
-        		if ( !alcanzables.contains(x) ) {
-        			cola.offer(x);
-        		}
-        	}
-        }
-        return alcanzables;
-    }
-
 	public Grafo aplanarRed () {
 		Grafo h = new Grafo();
 		for (Nodo x : this.nodos) {
-			x.adyacentes = this.obtenerAlcanzables(x);
+			x.adyacentes = x.obtenerAlcanzables();
 			h.agregarNodo(x);
 		}
 		return h;
 	}
+
+	public void cobertores () {
+		HashSet<Nodo> visitados = new HashSet<Nodo>();
+		HashSet<Nodo> cobertores = new HashSet<Nodo>();
+		int co = 0;
+
+		for (Nodo x : this.nodos) {
+			if ( !visitados.contains(x) ) {
+				cobertores.add(x);
+				visitados.addAll( x.obtenerAlcanzables() );
+				co++;
+			}			
+		}
+		System.out.println("La Agencia necesita enviar " + co + " mensaje/s a los siguiente/s agentes:");
+		for (Nodo x : cobertores) {
+			System.out.print(x.nombre + " ");
+		}
+		System.out.println();
+	}
+
 }

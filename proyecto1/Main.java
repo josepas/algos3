@@ -1,6 +1,3 @@
-import java.util.HashSet;
-
-
 class  Proyecto1 {
 
 	public static void main(String[] args) {
@@ -29,10 +26,9 @@ class  Proyecto1 {
 		g.agregarNodo(v4);
 		g.agregarNodo(v5);
 		g.imprimir();
-		g.obtenerAlcanzables(v1);
-		g.obtenerAlcanzables(v4);
+		g.cobertores();
 		h = g.aplanarRed();
-		h.imprimir();
+		h.imprimir();		
 
 	}
 }
