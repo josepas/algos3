@@ -1,5 +1,4 @@
 import java.util.HashSet;
-import java.util.Iterator;
 import java.util.LinkedList;
 
 public class Nodo {
@@ -70,20 +69,16 @@ public class Nodo {
     //Imprime el nodo de la forma: [<Nodo>]->[adyacentes de Nodo]
     //
     public void imprimir() {
-        System.out.print("[" + this.nombre + "] -> [");
-        Iterator<Nodo> itr = this.adyacentes.iterator();
-        
-        // verifica que los adyacentes no sean vacios
-        if (itr.hasNext()) {
-            System.out.print( itr.next().obtenerNombre() );
-        }
-
-        while(itr.hasNext()) {
-            String i = itr.next().obtenerNombre();
-            System.out.print(",  " + i);
+        System.out.print("[" + this.nombre + "] -> [ ");
+        for (Nodo x : this.adyacentes) {
+            System.out.print(x.nombre + " ");   
         }
         System.out.println("]");
+
     }
+
+
+
 
 }
 

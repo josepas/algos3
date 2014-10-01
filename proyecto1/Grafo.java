@@ -1,5 +1,4 @@
 import java.util.HashSet;
-import java.util.Iterator;	
 
 class Grafo {
 
@@ -28,13 +27,8 @@ class Grafo {
 	// Los imprime de la forma: [<Nodo>]->[adyacentes de Nodo]
 	//
 	public void imprimir () {
-		
-
-
-
-		Iterator<Nodo> itr = this.nodos.iterator();
-		while ( itr.hasNext() ) {
-			itr.next().imprimir();
+		for (Nodo x : this.nodos) {
+			x.imprimir();
 		}
 	}
 
@@ -65,9 +59,10 @@ class Grafo {
 				co++;
 			}			
 		}
+		System.out.print("Agentes cobertores: ");
 		for (Nodo x : cobertores) {
-			System.out.print(x.nombre + " ");
-		}
+			System.out.print(x.obtenerNombre() + " ");
+		}				
 		System.out.println();
 		return co;
 	}
