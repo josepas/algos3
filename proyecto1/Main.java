@@ -26,7 +26,7 @@ class  Proyecto1 {
 		g.agregarNodo(v4);
 		g.agregarNodo(v5);
 		g.imprimir();
-		g.cobertores();
+		System.out.println(g.cobertores());
 		h = g.aplanarRed();
 		h.imprimir();		
 

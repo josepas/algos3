@@ -37,7 +37,7 @@ class Grafo {
 		return h;
 	}
 
-	public void cobertores () {
+	public int cobertores () {
 		HashSet<Nodo> visitados = new HashSet<Nodo>();
 		HashSet<Nodo> cobertores = new HashSet<Nodo>();
 		int co = 0;
@@ -49,11 +49,11 @@ class Grafo {
 				co++;
 			}			
 		}
-		System.out.println("La Agencia necesita enviar " + co + " mensaje/s a los siguiente/s agentes:");
 		for (Nodo x : cobertores) {
 			System.out.print(x.nombre + " ");
 		}
 		System.out.println();
+		return co;
 	}
 
 }
