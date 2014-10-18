@@ -1,3 +1,14 @@
+/*
+        Autores:
+                Daniela Socas   11-10979
+                Jose Pascarella 11-10743
+
+        Descripcion:
+                Clase Nodo con la que se representa a 
+		cada agente y sus conocidos.
+*/
+
+
 import java.util.HashSet;
 import java.util.LinkedList;
 

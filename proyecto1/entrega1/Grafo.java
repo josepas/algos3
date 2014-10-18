@@ -1,3 +1,13 @@
+/*
+	Autores:
+		Daniela Socas 	11-10979
+		Jose Pascarella	11-10743
+	
+	Descripcion:
+		Clase Grafo con la que se representa la 
+		red de agentes.
+*/
+
 import java.util.HashSet;
 
 class Grafo {
