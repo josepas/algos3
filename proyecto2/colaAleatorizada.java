@@ -1,11 +1,12 @@
-import java.util.*;
+import java.util.LinkedList;
+import java.util.Random;
 
-class colaAleatorizada {
+class ColaAleatorizada {
 
 	private LinkedList<Integer> elems;
 	private int cantidad;
 
-	public colaAleatorizada() {
+	public ColaAleatorizada() {
 		this.elems = new LinkedList<Integer>();
 		this.cantidad = 0;
 
@@ -31,24 +32,4 @@ class colaAleatorizada {
 		}
 		return -1;
 	}
-
-	public static void main(String[] args) {
-
-		colaAleatorizada prueba = new colaAleatorizada();	
-		prueba.agregarElem(899);
-		prueba.agregarElem(53);
-		prueba.agregarElem(122);
-		prueba.agregarElem(233);
-		prueba.agregarElem(2);
-		prueba.agregarElem(123);
-		prueba.agregarElem(2313);
-		prueba.agregarElem(1);
-		prueba.agregarElem(232);
-		prueba.agregarElem(23);
-		prueba.extraerElem();
-		prueba.extraerElem();
-		prueba.extraerElem();
-	}
-
-
 }
