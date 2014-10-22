@@ -4,11 +4,11 @@ class ConjDisjuntos {
 	private int rango[];
 
 	public ConjDisjuntos(int n) {
-		this.aristas = new int[n+1];
-		this.rango = new int[n+1];
-		for (int i=0; i<=n; i++) {
+		this.aristas = new int[n];
+		this.rango = new int[n];
+		for (int i=0; i<n; i++) {
 			this.aristas[i] = i;
-			this.rango[i] = 0; 
+			this.rango[i] = 1; 
 		}	
 	} 
 
@@ -34,4 +34,37 @@ class ConjDisjuntos {
 		}
 	}
 
+	public void imprimir(int n) {
+		for (int i=0; i<n; i++) {
+			System.out.println(i + " --> " + this.aristas[i]);
+		}
+		System.out.println();
+	}
+
+	/*
+	public static void main(String[] args) {
+		ConjDisjuntos prueba = new ConjDisjuntos(8);
+		prueba.imprimir(8);
+		prueba.union(1,2);
+		prueba.union(3,4);
+		prueba.union(5,6);
+		prueba.union(4,6);
+		prueba.union(2,4);
+		prueba.union(3,7);
+		prueba.imprimir(8);
+	}
+	*/
+
 }
+
+	
+
+
+
+
+
+
+
+
+
+
