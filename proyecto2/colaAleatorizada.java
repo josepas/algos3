@@ -3,11 +3,11 @@ import java.util.Random;
 
 class ColaAleatorizada {
 
-	private LinkedList<Integer> elems;
+	private LinkedList<int[]> elems;
 	private int cantidad;
 
 	public ColaAleatorizada() {
-		this.elems = new LinkedList<Integer>();
+		this.elems = new LinkedList<int[]>();
 		this.cantidad = 0;
 
 	}
@@ -18,18 +18,19 @@ class ColaAleatorizada {
 		return false;
 	}
 
-	public void agregarElem(int n) {
-		this.elems.offer(n);
+	public void agregarElem(int[] arista) {
+		int[] aux = new int[2];
+		aux[0] = arista[0];
+		aux[1] = arista[1];
+		this.elems.offer(aux);
 		this.cantidad++;
 	}
 
-	public int extraerElem() {
-		if ( !this.esVacia() ) {
-			Random alt = new Random();
-			int aleatorio =  alt.nextInt(this.cantidad);
-			this.cantidad--;
-			return this.elems.remove(aleatorio);
-		}
-		return -1;
+	public int[] extraerElem() {
+		Random alt = new Random();
+		int aleatorio =  alt.nextInt(this.cantidad);
+		this.cantidad--;
+		return this.elems.remove(aleatorio);
 	}
+
 }

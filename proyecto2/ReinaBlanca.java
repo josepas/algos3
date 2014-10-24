@@ -32,7 +32,7 @@ class ReinaBlanca {
 				rb.union(mi,mj);
 				resultado = resultado + reino[mi][mj];
 			}
-
+			
 			// Se consiguio ya el arbol cobertor?
 			arbolCM = true;
 			for (i=0; i<n; i++) {
@@ -47,7 +47,6 @@ class ReinaBlanca {
 		}
 		return -1;
 	}
-
 
 	public static void main(String[] args) {
 		
