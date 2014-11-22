@@ -32,7 +32,4 @@ class Nodo {
 		this.padre = nodo;
 	}
 
-
-
-
 }

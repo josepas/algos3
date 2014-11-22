@@ -21,7 +21,6 @@ class Grafo {
 		this.aristas.offer(nueva);
 	}
 
-
 	public Nodo obtenerNodo(String id) {
 		return this.nodos.get(id);
 

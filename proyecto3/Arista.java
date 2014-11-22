@@ -23,9 +23,4 @@ class Arista {
 	public Nodo obtenerFin() {
 		return this.fin;
 	}
-
-
-
-
-
 }
