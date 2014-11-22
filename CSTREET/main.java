@@ -39,13 +39,6 @@ class  main {
 			}
 		}
 
-		public void imprimir(int n) {
-			for (int i=0; i<n; i++) {
-				System.out.println(i + " --> " + this.aristas[i]);
-			}
-			System.out.println();
-		}
-
 	}
 
 	static class Arista implements Comparable<Arista> {
@@ -90,8 +83,6 @@ class  main {
 		
 	}
 
-
-
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
 		int t,p,n,m;
@@ -114,21 +105,8 @@ class  main {
 			}
 			System.out.println(arbolMinCobertor(calles, n) * p);
 			
-
-
 		}
 
-		
-
-
-
-
-
-
-
 	}
-
-
-
 
 }

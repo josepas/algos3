@@ -41,20 +41,6 @@ class ConjDisjuntos {
 		System.out.println();
 	}
 
-	/*
-	public static void main(String[] args) {
-		ConjDisjuntos prueba = new ConjDisjuntos(8);
-		prueba.imprimir(8);
-		prueba.union(1,2);
-		prueba.union(3,4);
-		prueba.union(5,6);
-		prueba.union(4,6);
-		prueba.union(2,4);
-		prueba.union(3,7);
-		prueba.imprimir(8);
-	}
-	*/
-
 }
 
 	
