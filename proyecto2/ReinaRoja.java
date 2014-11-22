@@ -1,10 +1,22 @@
-import java.util.*;
+import java.util.Scanner;
 
+/** Obtiene la minima cantidad de dispuestas que se deben hacer para que la reina
+ *  blanca no contacte a todos sus mensajeros. (Minimo de cortes para cortar el 
+ *	MST. 
+ */
 class ReinaRoja {
 
+	/** 
+	 * Funcion que obtiene la minima cantidad de disputas.
+	 *
+	 * @param reino 	Todos los mensajeros del reino (Grafo)
+	 * @param aristas	Camino entre mensajeros. (Aristas)
+	 * @param n 		Cantidad de mensajeros. (Nodos)
+	 * @throws minimal	Minimo de disputas.
+	 */
 	public static int minimizarDisputas(char[][] reino, ColaAleatorizada aristas, int n) {
 			
-		int[] actual;			//
+		int[] actual;			
 		int minimal;
 		int nodosPorUnir;
 		   
@@ -29,7 +41,12 @@ class ReinaRoja {
 
 	}
 
-
+	/**
+	 * Lee la entrada de datos y llama a la funcion minimizarDisputas e 
+	 * imprime resultados.
+	 *
+	 * @throws El minimo y en cuantas iteraciones lo sacó. 
+	 */
 	public static void main(String[] args) {
 		
 		int n;				// Numero de localidades
@@ -46,8 +63,8 @@ class ReinaRoja {
 		char[][] reino = new char[n][n];
 		ColaAleatorizada aristas = new ColaAleatorizada();
 
-		// Lectura de la matriz y del numero de 
-		// iteraciones
+		/** Lectura de la matriz y del numero de 
+		    iteraciones */
 		for (i=0; i<n; i++) {
  			linea = sc.next();
  			reino[i] = linea.toCharArray();
@@ -64,14 +81,13 @@ class ReinaRoja {
 					}
 				}
 			}
-			
+
 			minimal = minimizarDisputas(reino, aristas, n);			
 			if ( minimal < minimo )
 				minimo = minimal;
-		
 		}
-		System.out.println(minimo + " en " + itr + " iteraciones.");
 
+		System.out.println(minimo + " en " + itr + " iteraciones.");
 	}
 
 } 
