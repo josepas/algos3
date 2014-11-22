@@ -1,52 +1,51 @@
 import java.io.*;
 import java.util.*;
 
-class main {
+class Rutas {
 
 	public static void main(String[] args) {
+ 		// lectura y escritura
  		Scanner sc = null;	
+ 		PrintWriter escritor = null;
  		try {
- 			sc = new Scanner(new File("entrada.in"));
+ 			sc = new Scanner(new File(args[0]));
+ 			escritor = new PrintWriter(args[1]);
   
 		} catch (FileNotFoundException e) {
-			System.out.println("No existe el archivo");
+			System.out.println("Error de lectura/escritura");
             e.printStackTrace();
         }
-		
+	
 		Grafo g;
 		int t; 
 		int m,n;
-		int i,j,k;
-		String ciudad;
+		int i;
+		int costo;
+		String ciudad, origen, destino;
 		
-
 		t = sc.nextInt();
-
 		while (t-- > 0) {
 
 			m = sc.nextInt();
 			n = sc.nextInt();
 			g = new Grafo(m);
 
-			// agrego los nodos
+			// Agrego los nodos
 			for (i=0; i<m; i++) {
 				ciudad = sc.next();
 				g.agregarNodo(ciudad, new Nodo( ciudad, sc.nextInt(), null) );
 			}
 
-			// agrego las aristas
+			// Agrego las aristas
 			for (i=0; i<n; i++) {
-				g.agregarArista(new Arista(g.obtenerNodo( sc.next() ), g.obtenerNodo( sc.next() ), sc.nextInt() ) );
+				origen = sc.next();
+				destino = sc.next();
+				costo = sc.nextInt();
+				g.agregarArista(new Arista( g.obtenerNodo(origen), g.obtenerNodo(destino), g.obtenerNodo(origen).obtenerPago() - costo) );
+
 			}
 
 			// Bellman-Ford
-			for ( Arista x : g.obtenerAristas() ) {
-				System.out.println(x.obtenerIni().obtenerNombre() + " - " + x.obtenerFin().obtenerNombre() + " " + x.obtenerCosto());
-			}
-
-			
-
-
 
 			// Relajacion de Aristas
 			int aristaYprevio;
@@ -63,45 +62,46 @@ class main {
 				}
 			}
 			
-
-
-
 			// Chequeo de ciclos negativos
 			LinkedList<Nodo> nodosDeCiclo = new LinkedList<Nodo>();
-			HashSet<Nodo> eliminados = new HashSet<Nodo>();
-
+			
 			for ( Arista x : g.obtenerAristas() ) {
 
 				aristaYprevio = x.obtenerIni().obtenerPago() + x.obtenerCosto();
 
 				if ( aristaYprevio < x.obtenerFin().obtenerPago() && !nodosDeCiclo.contains( x.obtenerIni() ) ) {
-					System.out.println("Holaaaaaaa");
 					nodosDeCiclo.offer( x.obtenerIni() );
 				}
 			}
 
+			// Escritura de resultados
 			if ( nodosDeCiclo.isEmpty() ) {
-				System.out.println("TODAS LAS RUTAS SON RENTABLES");
+				escritor.println("TODAS LAS RUTAS SON RENTABLES");
 			}
 
+			HashSet<Nodo> eliminados = new HashSet<Nodo>();
 			Nodo aux;
 			for ( Nodo x : nodosDeCiclo ) {
 				if ( !eliminados.contains(x) ) {
 
 					eliminados.add(x);
-					System.out.println(x.obtenerNombre());
+					escritor.print(x.obtenerNombre() + " ");
 					
 					aux = x.obtenerPadre();
-					while( x.obtenerNombre() != aux.obtenerPadre().obtenerNombre() ) {
+					while( x.obtenerNombre() != aux.obtenerNombre() ) {
 						eliminados.add(aux);
-						System.out.println(aux.obtenerNombre());
+						escritor.print(aux.obtenerNombre() + " ");
 
 						aux = aux.obtenerPadre();
 					}
+					escritor.println();
 				}
 			}
-
+			if (t != 0)
+				escritor.println();
 		}
+		sc.close();
+		escritor.close();
 	}
 
 }
