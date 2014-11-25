@@ -7,6 +7,15 @@ import java.util.LinkedList;
 
 class Rutas {
 
+	/** 
+	 * Implementacion del algoritmo Bellman Ford. 
+	 *
+	 * @param g 		Grafo 
+	 * @param fuente 	El nodo que se va iniciar. 
+	 * @param caso 		1=>Nodos pertenecientes al ciclo del fuente. 
+	 *					0=>Nodos perteneciente a un ciclo. 
+	 * @throws nodosDeCiclo Nodos que pertenecen a un ciclo negativo. 
+	 */
 	public static LinkedList<Nodo> bellmanFord(Grafo g, String fuente, int caso) {
 		int m = g.numeroNodos();
 		int n = g.numeroAristas();
@@ -16,7 +25,7 @@ class Rutas {
 		g.inicializarInf();
 		g.obtenerNodo(fuente).cambiarPago(0);
 
-		// Relajacion de Aristas
+		/** Relajación de Aristas */
 		int aristaYprevio;
 		for (i=1; i<n; i++) {
 						
@@ -31,7 +40,7 @@ class Rutas {
 			}
 		}
 		
-		// Chequeo de ciclos negativos
+		/** Chequeo de ciclos negativos */
 		LinkedList<Nodo> nodosDeCiclo = new LinkedList<Nodo>();
 	
 		if (caso == 0) {	
@@ -39,8 +48,9 @@ class Rutas {
 
 				aristaYprevio = x.obtenerIni().obtenerPago() + x.obtenerCosto();
 
-				if ( aristaYprevio < x.obtenerFin().obtenerPago() && !nodosDeCiclo.contains( x.obtenerIni() ) ) {
-					nodosDeCiclo.offer( x.obtenerIni() );
+				if ( aristaYprevio < x.obtenerFin().obtenerPago() && 
+					!nodosDeCiclo.contains( x.obtenerIni() ) ) {
+						nodosDeCiclo.offer( x.obtenerIni() );
 				}
 			}
 		}
@@ -61,8 +71,14 @@ class Rutas {
 
 	}
 
+	/** 
+	 * Encuentra los ciclos negativos disjuntos del grafo que se representa.
+	 *
+	 * @throws  nuevo archivo con la entrada.  
+	 *			Si el archivo no existe da NoFileFoundException.
+	 */
 	public static void main(String[] args) {
- 		// lectura y escritura
+ 		/** Lectura y escritura */
  		Scanner sc = null;	
  		PrintWriter escritor = null;
  		try {
@@ -91,27 +107,28 @@ class Rutas {
 			n = sc.nextInt();
 			g = new Grafo(m, n);
 
-			// Agrego los nodos
+			/** Se agregan los nodos. */
 			ciudad = "";
 			for (i=0; i<m; i++) {
 				ciudad = sc.next();
 				g.agregarNodo(ciudad, new Nodo( ciudad, sc.nextInt(), null) );
 			}
 
-			// Agrego las aristas
+			/** Se agregan las aristas. */
 			for (i=0; i<n; i++) {
 				origen = sc.next();
 				destino = sc.next();
 				costo = sc.nextInt();
-				g.agregarArista(new Arista( g.obtenerNodo(origen), g.obtenerNodo(destino), g.obtenerNodo(origen).obtenerPago() - costo) );
+				g.agregarArista(new Arista( g.obtenerNodo(origen), g.obtenerNodo(destino), 
+				g.obtenerNodo(origen).obtenerPago() - costo) );
 
 			}
 
-			// Encuentro los ciclos
+			/** Se obtienen los ciclos. */
 			nodosDeCiclo = bellmanFord(g, ciudad, 0);
 
 
-			// Escritura de resultados
+			/** Escritura de resultados. */
 			if ( nodosDeCiclo.isEmpty() ) {
 				escritor.println("TODAS LAS RUTAS SON RENTABLES");
 			} 
