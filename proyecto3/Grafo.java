@@ -5,10 +5,14 @@ import java.util.LinkedList;
 class Grafo {
 	private HashMap<String, Nodo> nodos;
 	private LinkedList<Arista> aristas;
+	private int nAristas;
+	private int nNodos;
 
-	public Grafo(int m) {
+	public Grafo(int m, int n) {
 		this.nodos = new HashMap<String, Nodo>(m);
 		this.aristas = new LinkedList<Arista>(); 
+		this.nNodos = m;
+		this.nAristas = n;
 	} 
 
 	public LinkedList<Arista> obtenerAristas() {
@@ -28,10 +32,19 @@ class Grafo {
 
 	}
 
-	public HashMap<String, Nodo> obtenerNodos() {
-		return this.nodos;
+	public int numeroNodos() {
+		return this.nNodos;
 	}
 
+	public int numeroAristas() {
+		return this.nAristas;
+	}
+
+	public void inicializarInf() {
+		for (Map.Entry<String, Nodo> s : this.nodos.entrySet() ) {
+			this.obtenerNodo( s.getKey() ).cambiarPago(10000);
+		}
+	}
 
 
 }
